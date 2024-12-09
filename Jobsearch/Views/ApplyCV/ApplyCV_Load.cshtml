@@ -1,0 +1,30 @@
+﻿@model Jobsearch.Models.CVapply
+@{
+    ViewBag.Title = "ApplyCV_Load";
+    var cid = TempData["cid"];
+    var jid = TempData["jid"];
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Apply For Job</h1>
+<div>
+    @using (Html.BeginForm("ApplyClick", "ApplyCV", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <p>Company Id: @cid</p>
+        <p>Job Id: @jid</p>
+        <div> 
+            <label>Upload Your Resume :</label>
+        </div>
+        <div>
+            @Html.TextBox("file", "", new { Type = "file" })
+        </div>
+        <div></div>
+        <div>
+            <input type="submit" value="Upload" />
+            @Html.DisplayFor(m => m.appmsg)
+        </div>
+    }
+    <div>
+        @Html.ActionLink("Back to Home Page", "UserHomePage", "LoginView")
+    </div>
+</div>

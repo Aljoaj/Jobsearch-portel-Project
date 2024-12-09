@@ -1,0 +1,44 @@
+﻿@model Jobsearch.Models.Jobinsert
+@{
+    ViewBag.Title = "ComHomePage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>New Job Requirement</h1>
+<div>
+    @using (Html.BeginForm("JobinsClick", "LoginView", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            <label>Job Title :</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.JobTitle)
+            @Html.ValidationMessageFor(m => m.JobTitle)
+        </div>
+        <div>
+            <label>Job Description :</label>
+        </div>
+        <div>
+            @Html.TextAreaFor(m => m.JobDes)
+            @Html.ValidationMessageFor(m => m.JobDes)
+        </div>
+        <div>
+            <label>Job Skills :</label>
+        </div>
+        <div>
+            @Html.TextAreaFor(m => m.JobSkills)
+            @Html.ValidationMessageFor(m => m.JobSkills)
+        </div>
+        <div>
+            <label>Last Date For Apply :</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Enddate)
+        </div>
+        <div>
+            <input type="submit" value="Insert" />
+            @Html.DisplayFor(m => m.Cmsg)
+        </div>
+    }
+</div>
+
